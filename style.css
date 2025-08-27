@@ -1,0 +1,17 @@
+body{
+    background-color: antiquewhite;
+    text-align: center;
+}
+
+#display-book{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin: 24px;
+    gap: 12px;
+}
+
+.tables{
+    background-color: white;
+    padding: 24px;
+    border: 2px solid gold;
+}

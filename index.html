@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Library</title>
+</head>
+<body>
+
+    <h1>Library</h1>
+    <p>Organize your favorite reads with ease!</p>
+    <button id="add-book" class="add-book">Add Book</button>
+
+    <div id="add-book">
+        <form action="#" method="get">
+            <div>
+                <label for="bookName">Book:</label>
+                <input id="bookName" type="text" placeholder="Meditations" required>
+            </div>
+            <div>
+                <label for="authorName">Author Name:</label>
+                <input id="authorName" type="text" placeholder="Marcus Aurelius" required>
+            </div>
+            <div>
+                <label for="page">Pages:</label>
+                <input id="page" type="number" placeholder="150">
+            </div>
+            <div>
+                <p>Have Read:</p>
+                <label for="read">Yes</label>
+                <input id="read" type="radio" name="haveRead" placeholder="yes">
+                <label for="notRead">No</label>
+                <input id="notRead" type="radio" name="haveRead" placeholder="no">
+            </div>
+            
+            <button type="submit">Save</button>
+        </form>
+    </div>
+
+    <div id="display-book">
+    </div>
+    <script src="script.js"></script>
+
+</body>
+</html>
