@@ -5,7 +5,10 @@ const addBookBtn = document.querySelector("#add-book");
 const container = document.querySelector(".container");
 const bookDiv = document.querySelector("#bookDiv");
 
-const myLibrary = [];
+
+
+
+let myLibrary = [];
 
 let addBookTrue = false;
 
@@ -27,7 +30,12 @@ function addBookToLibrary(name, author, page, haveRead){
 
     myLibrary.push(book);
 
+    display(myLibrary[myLibrary.length - 1]);
+
 }
+
+
+addBookToLibrary("Meditations", "Marcus Arelius", 150, "Yes");
 
 function closeWindow(){
     container.style.display = "none";
@@ -37,11 +45,19 @@ function closeWindow(){
 function display(element){
     const divAdd = document.createElement("div");
     divAdd.classList.add("tables");
-    divAdd.innerHTML = `<p>Name: ${element.name}</p>
-                            <p> Author: ${element.author}</p>
-                            <p> Page: ${element.page}</p>
-                            <p> Have Read: ${element.haveRead}</p>`;
-
+    divAdd.setAttribute("data-id", element.uuid);
+    divAdd.innerHTML = `
+                        <p>Name:</p>
+                        <p>${element.name}</p>
+                        <p> Author:</p>
+                        <p>${element.author}</p>
+                        <p> Page: ${element.page}</p>
+                        <p></p>
+                        <p> Have Read: ${element.haveRead}</p>
+                        <p></p>
+                        <button data-id=${element.uuid} class="removeBtn">Remove</button>
+                        <button class="toggleRead">Have Read</button>
+                        `;
     displayBook.appendChild(divAdd);
 }
 
@@ -66,5 +82,18 @@ addBookBtn.addEventListener("click", (event) =>{
 container.addEventListener("click", event => {
     if(bookDiv.contains(event.target)) return;
     else closeWindow();
+})
+
+document.addEventListener("click", e => {
+    if(e.target.classList.contains("removeBtn")){
+        const parentDiv = e.target.closest(".tables");
+        const id = parentDiv.getAttribute("data-id");
+        console.log(myLibrary);
+        parentDiv.remove();
+
+        myLibrary = myLibrary.filter(item => item.uuid != id);
+
+        console.log("After remove btn:", myLibrary);
+    }
 })
 

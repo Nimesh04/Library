@@ -104,13 +104,49 @@ form button:hover{
 
 #display-book{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     margin: 24px;
     gap: 12px;
 }
 
 .tables{
+    text-align: start;
     background-color: white;
     padding: 24px;
     border: 2px solid gold;
+    border-radius: 12px;
+    box-shadow: #8812b7 5px 6px 1px 0px;
+}
+
+
+.removeBtn{
+    color: white;
+    background-color: red;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 0.4rem;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.toggleRead{
+    color: #eafff5;
+    background-color: #a511d7;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 0.4rem;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.removeBtn:hover{
+    background-color: rgb(134, 0, 0);
+}
+
+.toggleRead:hover{
+    background-color: #6e0c8e;
 }
