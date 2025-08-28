@@ -9,33 +9,47 @@
 <body>
 
     <h1>Library</h1>
-    <p>Organize your favorite reads with ease!</p>
+    <p class="sub-heading">Organize your favorite reads with ease!</p>
     <button id="add-book" class="add-book">Add Book</button>
 
-    <div id="add-book">
-        <form action="#" method="get">
-            <div>
-                <label for="bookName">Book:</label>
-                <input id="bookName" type="text" placeholder="Meditations" required>
-            </div>
-            <div>
-                <label for="authorName">Author Name:</label>
-                <input id="authorName" type="text" placeholder="Marcus Aurelius" required>
-            </div>
-            <div>
-                <label for="page">Pages:</label>
-                <input id="page" type="number" placeholder="150">
-            </div>
-            <div>
-                <p>Have Read:</p>
-                <label for="read">Yes</label>
-                <input id="read" type="radio" name="haveRead" placeholder="yes">
-                <label for="notRead">No</label>
-                <input id="notRead" type="radio" name="haveRead" placeholder="no">
-            </div>
-            
-            <button type="submit">Save</button>
-        </form>
+    <div class="container">
+        <div id="bookDiv">
+            <form id="myForm" action="#" method="get">
+                <div>
+                    <div class="col-25">
+                        <label for="bookName">Book:</label>
+                    </div>
+                    <div class="col-75">
+                        <input id="bookName" type="text" placeholder="Meditations" required>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-25">
+                        <label for="authorName">Author Name:</label>
+                    </div>
+                    <div class="col-75">
+                        <input id="authorName" type="text" placeholder="Marcus Aurelius" required>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-25">
+                        <label for="page">Pages:</label>
+                    </div>
+                    <div class="col-75">
+                        <input id="page" type="number" placeholder="150">
+                    </div>
+                </div>
+                <div class="radioSection">
+                    <p>Have Read:</p>
+                    <label for="read">Yes</label>
+                    <input id="read" type="radio" name="haveRead" value="Yes" placeholder="yes">
+                    <label for="notRead">No</label>
+                    <input id="notRead" type="radio" name="haveRead" value="No" placeholder="no" checked>
+                </div>
+        
+                <button id="save-btn" type="submit">Save</button>
+            </form>
+        </div>
     </div>
 
     <div id="display-book">
