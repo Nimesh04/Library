@@ -23,6 +23,12 @@ function Book(uuid, name, author, page, haveRead){
     }
 }
 
+Book.prototype.read = function(){
+    if((this.haveRead).toLowerCase() == "yes") this.haveRead = "No";
+    else if((this.haveRead).toLowerCase() == "no") this.haveRead ="Yes";
+    // console.log(this.haveRead);
+}
+
 function addBookToLibrary(name, author, page, haveRead){
     let uuid = crypto.randomUUID();
 
@@ -34,9 +40,6 @@ function addBookToLibrary(name, author, page, haveRead){
 
 }
 
-
-addBookToLibrary("Meditations", "Marcus Arelius", 150, "Yes");
-
 function closeWindow(){
     container.style.display = "none";
 }
@@ -47,13 +50,13 @@ function display(element){
     divAdd.classList.add("tables");
     divAdd.setAttribute("data-id", element.uuid);
     divAdd.innerHTML = `
-                        <p>Name:</p>
+                        <h3>Name:</h3>
                         <p>${element.name}</p>
-                        <p> Author:</p>
+                        <h3> Author:</h3>
                         <p>${element.author}</p>
-                        <p> Page: ${element.page}</p>
+                        <p><strong>Page:</strong> ${element.page}</p>
                         <p></p>
-                        <p> Have Read: ${element.haveRead}</p>
+                        <p class="read"><strong>Have Read:</strong> ${element.haveRead}</p>
                         <p></p>
                         <button data-id=${element.uuid} class="removeBtn">Remove</button>
                         <button class="toggleRead">Have Read</button>
@@ -88,12 +91,24 @@ document.addEventListener("click", e => {
     if(e.target.classList.contains("removeBtn")){
         const parentDiv = e.target.closest(".tables");
         const id = parentDiv.getAttribute("data-id");
-        console.log(myLibrary);
         parentDiv.remove();
 
         myLibrary = myLibrary.filter(item => item.uuid != id);
+    }
 
-        console.log("After remove btn:", myLibrary);
+    if(e.target.classList.contains("toggleRead")){
+        const parentDiv = e.target.closest(".tables");
+        const id = parentDiv.getAttribute("data-id");
+        const readPara = parentDiv.querySelector(".read");
+
+        let book = myLibrary.filter(item => item.uuid == id)[0];
+        book.read();
+        readPara.innerHTML = `<p class="read"><strong>Have Read:</strong> ${book.haveRead}</p>`;
+
     }
 })
 
+
+
+addBookToLibrary("Meditations", "Marcus Aurelius", 172, "Yes");
+addBookToLibrary("The Hard Thing About Hard Things", "Ben Horowitz", 304, "Yes");
